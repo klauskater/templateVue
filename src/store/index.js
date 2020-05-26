@@ -52,7 +52,6 @@ export default new Vuex.Store({
       data.user.updateProfile({
         displayName: `${name} ${surname}`
       })
-      console.log("registration", email, pass, name, surname)
     },
     async authorisation({ commit }, {email, pass}){
       const fbase = firebase.auth()
@@ -64,12 +63,10 @@ export default new Vuex.Store({
       }
       commit("setAuth", true)
       commit("setUser", tmpUser)
-      console.log("authorisation", email, pass)
     },
     async recovery(_, email){
       const fbase = firebase.auth()
       fbase.sendPasswordResetEmail(email)
-      console.log("recovery", email)
     },
     signout(){
       firebase.auth().signOut()

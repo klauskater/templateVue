@@ -33,9 +33,7 @@ export default {
     ...mapState(["autorise", "user"])
   },
   async mounted() {
-    console.log("begin")
     const authorise = await this.checkAuth()
-    console.log("authorise", authorise)
     if(!authorise)
       this.$router.push({name: "Authorization"})
     this.loading = false
